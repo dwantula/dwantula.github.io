@@ -1,12 +1,10 @@
-import './App.css';
 import React from 'react';
+import './App.scss';
+
+import Wishlist from './screens/Wishlist';
 
 function App() {
-  return (
-    <div className="App">
-      <p>ala ma kota</p>
-    </div>
-  );
+  return <Wishlist />;
 }
 
 export default App;
