@@ -1,19 +1,26 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPerson } from '../../../store/people/actions';
 import './styles.scss';
 
 import PersonCard from '../PersonCard/PersonCard';
 import Button from '../Button/Button';
 
 function PeopleList() {
-  const names = ['Ala', 'Ola', 'Kasia', 'Wiola', 'Arek'];
+  const dispatch = useDispatch();
+  const people = useSelector((state) => state.people);
+
+  function addNewPerson() {
+    dispatch(addPerson('Witek'));
+  }
 
   return (
     <div className="people-card">
-      {names.map((name) => (
-        <PersonCard key={Math.floor(Math.random * 23)} name={name} />
+      {people.map(({ id, name }) => (
+        <PersonCard key={id} name={name} />
       ))}
       <Button
-        onClick={() => {}}
+        onClick={addNewPerson}
         className="people-card__button-add-person"
         text="Add Person"
       />
