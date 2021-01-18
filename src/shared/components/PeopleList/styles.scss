@@ -1,0 +1,22 @@
+.people-card {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  align-self: center;
+  margin-top: 50px;
+  align-self: center;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: space-between;
+}
+
+.people-card__button-add-person {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  font-size: 2rem;
+  border-radius: 50%;
+  padding: 30px 5px ;
+  margin:auto;
+  margin-left: 0;
+}
