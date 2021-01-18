@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../Button/Button';
 
 function PersonCard({ name }) {
-  const gifts = ['ball', 'tv', 'sadsa', 'sadsdsadsdsadsadas asdsadsa'];
+  // const gifts = ['ball', 'tv', 'sadsa', 'sadsdsadsdsadsadas asdsadsa'];
   return (
     <div className="person-card">
       <div className="person-card__name">
@@ -25,10 +25,13 @@ function PersonCard({ name }) {
           text="edit"
         />
       </div>
-      <div className="person-card__gifts">
+      {/* <div className="person-card__gifts">
         {gifts.length > 0 ? (
           gifts.map((gift) => (
-            <li className="person-card__gift">
+            <li
+              key={Math.floor(Math.random * 12223)}
+              className="person-card__gift"
+            >
               <p className="person-card__gift-name">{gift}</p>
               <FontAwesomeIcon
                 icon={faPencilAlt}
@@ -45,7 +48,7 @@ function PersonCard({ name }) {
         ) : (
           <p>I did not get any gift</p>
         )}
-      </div>
+      </div> */}
       <Button
         onClick={() => {}}
         type="button"

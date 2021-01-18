@@ -16,8 +16,8 @@ function PeopleList() {
 
   return (
     <div className="people-card">
-      {people.map((person) => (
-        <PersonCard key={Math.floor(Math.random * 23)} name={person} />
+      {people.map(({ id, name }) => (
+        <PersonCard key={id} name={name} />
       ))}
       <Button
         onClick={addNewPerson}
