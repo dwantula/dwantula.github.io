@@ -1,0 +1,40 @@
+{
+  "explorer.confirmDelete": false,
+  "prettier.arrowParens": "avoid",
+  "editor.formatOnSave": true,
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 120,
+  "eslint.probe": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "html",
+      "vue",
+      "markdown",
+      "react",
+      "jsx"
+  ],
+  "editor.tabSize": 2,
+  "eslint.alwaysShowStatus": true,
+  
+  "editor.codeActionsOnSave": null,
+  "git.autofetchPeriod": 80,
+  "typescript.format.insertSpaceAfterSemicolonInForStatements": true,
+  "prettier.jsxSingleQuote": true,
+  "editor.autoClosingQuotes": "always",
+  "editor.autoClosingOvertype": "always",
+  "files.autoSave": "onFocusChange",
+  "eslint.lintTask.enable": true,
+  "editor.autoSurround": "quotes",
+  "window.zoomLevel": 0,
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": false,
+  "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "json.schemas": [
+  
+  ],
+  
+}
