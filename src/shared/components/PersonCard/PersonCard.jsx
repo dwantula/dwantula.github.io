@@ -2,38 +2,43 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../Button/Button';
 
 function PersonCard({ name }) {
-  const gifts = ['ball', 'tv', 'car'];
+  const gifts = ['ball', 'tv', 'sadsa', 'sadsdsadsdsadsadas asdsadsa'];
   return (
     <div className="person-card">
       <div className="person-card__name">
         {name}
-        <Button onClick={() => {}} className="btn" type="button" text="edit" />
         <Button
           onClick={() => {}}
-          className="btn"
+          className="button person-card__button-delete-person"
           type="button"
-          text="delete"
+          text="X"
+        />
+        <Button
+          onClick={() => {}}
+          className="button person-card__button-edit-person"
+          type="button"
+          text="edit"
         />
       </div>
       <div className="person-card__gifts">
         {gifts.length > 0 ? (
           gifts.map((gift) => (
-            <li className="gift">
-              <p>{gift}</p>
-              <Button
-                onClick={() => {}}
-                className="btn"
-                type="button"
-                text="edit"
+            <li className="person-card__gift">
+              <p className="person-card__gift-name">{gift}</p>
+              <FontAwesomeIcon
+                icon={faPencilAlt}
+                className="button person-card__edit-gift"
               />
               <Button
                 onClick={() => {}}
-                className="btn"
+                className="button person-card__button-delete-gift"
                 type="button"
-                text="delete"
+                text="X"
               />
             </li>
           ))
@@ -45,7 +50,7 @@ function PersonCard({ name }) {
         onClick={() => {}}
         type="button"
         text="+"
-        className="person-card_add-button"
+        className="person-card_button-add-person"
       />
     </div>
   );
