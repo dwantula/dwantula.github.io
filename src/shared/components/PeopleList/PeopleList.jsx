@@ -14,7 +14,7 @@ function PeopleList() {
       ))}
       <Button
         onClick={() => {}}
-        className="people-card__btn-add-person"
+        className="people-card__button-add-person"
         text="Add Person"
       />
     </div>

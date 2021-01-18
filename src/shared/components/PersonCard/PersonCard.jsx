@@ -50,7 +50,7 @@ function PersonCard({ name }) {
         onClick={() => {}}
         type="button"
         text="+"
-        className="person-card_button-add-person"
+        className="person-card_button-add-gitf"
       />
     </div>
   );
