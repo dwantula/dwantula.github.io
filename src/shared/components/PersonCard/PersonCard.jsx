@@ -1,19 +1,42 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { updatePersonName } from '../../../store/people/actions';
+// import PropTypes from 'prop-types';
+import Input from '../Input/Input';
 import './styles.scss';
 
-// import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../Button/Button';
 
-function PersonCard({ name }) {
-  // const gifts = ['ball', 'tv', 'sadsa', 'sadsdsadsdsadsadas asdsadsa'];
+function PersonCard() {
+  const dispatch = useDispatch();
+  const [namePerson, setNamePerson] = useState('');
+  const textInput = useRef();
+
+  useEffect(() => {
+    textInput.current.focus();
+  }, []);
+
+  function handlePersonNameChange(event) {
+    setNamePerson(event.target.value);
+  }
+
+  function addName() {
+    dispatch(updatePersonName(`${namePerson}`));
+  }
+
   return (
     <div className="person-card">
       <div className="person-card__name">
-        {name}
+        <Input
+          inputRef={textInput}
+          onChange={handlePersonNameChange}
+          value={namePerson}
+          placeholder="Write name"
+          type="input"
+          className="person-card__input"
+        />
         <Button
-          onClick={() => {}}
+          onClick={addName}
           className="button person-card__button-delete-person"
           type="button"
           text="X"
@@ -25,30 +48,7 @@ function PersonCard({ name }) {
           text="edit"
         />
       </div>
-      {/* <div className="person-card__gifts">
-        {gifts.length > 0 ? (
-          gifts.map((gift) => (
-            <li
-              key={Math.floor(Math.random * 12223)}
-              className="person-card__gift"
-            >
-              <p className="person-card__gift-name">{gift}</p>
-              <FontAwesomeIcon
-                icon={faPencilAlt}
-                className="button person-card__edit-gift"
-              />
-              <Button
-                onClick={() => {}}
-                className="button person-card__button-delete-gift"
-                type="button"
-                text="X"
-              />
-            </li>
-          ))
-        ) : (
-          <p>I did not get any gift</p>
-        )}
-      </div> */}
+
       <Button
         onClick={() => {}}
         type="button"
@@ -59,8 +59,8 @@ function PersonCard({ name }) {
   );
 }
 
-PersonCard.propTypes = {
-  name: PropTypes.string.isRequired,
-};
+// PersonCard.propTypes = {
+//   namePerson: PropTypes.string.isRequired,
+// };
 
 export default PersonCard;

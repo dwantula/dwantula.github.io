@@ -11,7 +11,7 @@ function PeopleList() {
   const people = useSelector((state) => state.people);
 
   function addNewPerson() {
-    dispatch(addPerson('Witek'));
+    dispatch(addPerson());
   }
 
   return (
