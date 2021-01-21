@@ -16,8 +16,8 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  className: PropTypes.string,
-  text: PropTypes.string,
+  className: '',
+  text: '',
 };
 
 export default Button;

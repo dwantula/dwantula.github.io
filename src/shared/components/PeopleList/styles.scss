@@ -18,3 +18,8 @@
   font-family: monospace, Arial, Helvetica, sans-serif;
   cursor: pointer;
 }
+
+.people-card__people-list {
+  display: flex;
+  flex-wrap: wrap; 
+}

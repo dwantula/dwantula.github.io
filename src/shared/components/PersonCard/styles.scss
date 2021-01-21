@@ -89,3 +89,10 @@
     border: 2px solid lightblue;
   }
 }
+
+.person-card__navigation-buttons {
+  display: flex;
+  margin-top: auto;
+  padding: 20px 10px;
+  justify-content: space-between;
+}

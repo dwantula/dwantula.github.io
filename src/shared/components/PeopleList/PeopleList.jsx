@@ -21,7 +21,7 @@ function PeopleList() {
         className="people-card__button-add-person"
         text="Add Person"
       />
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <div className="people-card__people-list">
         {people.map(({ id, name }) => (
           <PersonCard key={id} id={id} name={name} />
         ))}

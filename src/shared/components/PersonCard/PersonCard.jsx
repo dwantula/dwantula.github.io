@@ -44,14 +44,7 @@ function PersonCard({ id }) {
           className="person-card__input"
         />
       </div>
-      <div
-        style={{
-          display: 'flex',
-          marginTop: 'auto',
-          padding: '20px 10px',
-          justifyContent: 'space-between',
-        }}
-      >
+      <div className="person-card__navigation-buttons">
         <Button
           onClick={deletePerson}
           className="person-card__button-delete-person"

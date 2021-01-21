@@ -29,27 +29,26 @@ Input.propTypes = {
   onBlur: PropTypes.func,
   value: PropTypes.string,
   type: PropTypes.string,
-  inputRef: PropTypes.objectOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
-  ),
+  // inputRef: PropTypes.string,
+  // inputRef: PropTypes.objectOf(
+  //   PropTypes.shape({
+  //     name: PropTypes.string,
+  //   }),
+  // ),
+  inputRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
 };
 
 Input.defaultProps = {
-  className: PropTypes.string,
-  placeholder: PropTypes.string,
-  onChange: PropTypes.func,
-  onBlur: PropTypes.func,
-  value: PropTypes.string,
-  type: PropTypes.string,
-  inputRef: PropTypes.objectOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
-  ),
+  className: '',
+  placeholder: '',
+  onChange: '',
+  onBlur: '',
+  value: '',
+  type: '',
+  inputRef: '',
 };
 
 export default Input;
