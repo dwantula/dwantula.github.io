@@ -1,22 +1,25 @@
 .people-card {
   display: flex;
-  flex-wrap: wrap;
-  max-width: 1000px;
-  align-self: center;
-  margin-top: 50px;
-  align-self: center;
-  margin-right: auto;
-  margin-left: auto;
-  justify-content: space-between;
+  flex-direction: column;
+  padding: 10px 30px;
 }
 
 .people-card__button-add-person {
-  display: flex;
-  width: 150px;
-  height: 150px;
-  font-size: 2rem;
+  width: 100px;
+  height: 100px;
+  font-size: 1rem;
   border-radius: 50%;
-  padding: 30px 5px ;
-  margin:auto;
-  margin-left: 0;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  color: #eeeeee;
+  border: none;
+  background: linear-gradient(#e66465, #9198e5);
+  font-family: monospace, Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.people-card__people-list {
+  display: flex;
+  flex-wrap: wrap; 
 }

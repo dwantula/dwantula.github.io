@@ -2,21 +2,19 @@
   margin-top: 40px;
   display: flex;
   flex-direction: column;
-  border: 5px solid gray;
-  box-shadow: 2px 2px 1px 8px lightgray;
+  box-shadow: 0 0px 15px -3px rgba(0, 0, 0, 0.1);
   width: 300px;
   min-height: 300px;
   margin-right: 30px;
+  position: relative;
+  min-height: 70vh;
 }
 
 .person-card__name {
-  display: inline-block;
-  justify-content: space-between;
-  text-align: center;
-  font-size: 2rem;
+  display: flex;
   height: 60px;
   padding: 10px;
-  border-bottom:2px solid gray ;
+  border-bottom: 2px solid lightblue;
   text-align: start;
   letter-spacing: 2px;
 }
@@ -32,7 +30,7 @@
 .person-card__gift {
   display: block;
   border-bottom: 1px solid black;
-  color:gray;
+  color: gray;
   justify-content: flex-start;
   font-size: 1.2rem;
   height: 70px;
@@ -43,7 +41,7 @@
   font-size: 1.4rem;
 }
 
-.person-card__edit-gift{
+.person-card__edit-gift {
   margin-left: 5px;
 }
 
@@ -52,30 +50,49 @@
 }
 
 .person-card_button-add-gitf {
-  display: flex;
   outline: 0;
-  align-self: center;
-  font-size: 2rem;
-  padding: 5px;
-  justify-content: center;
-  border-radius: 50px;
-  margin: 5px;
-  height: 50px;
-  width: 50px;
-  cursor: pointer;
-}
-
-.button {
-  outline: 0;
-  border: 0;
-  cursor: pointer;
+  text-align: center;
   font-size: 1rem;
+  border-radius: 50px;
+  font-family: monospace, Arial, Helvetica, sans-serif;
+  background-color: lightblue;
+  cursor: pointer;
+  border: 1px solid lightblue;
+  color: #eeeeee;
+  cursor: pointer;
 }
 
 .person-card__button-delete-person {
-  float: right;
+  background: #e66465;
+  color: #ffffff;
+  padding: 8px 12px;
+
+  font-size: 1rem;
+  border-radius: 50px;
+  border: none;
+  font-family: monospace, Arial, Helvetica, sans-serif;
 }
 
 .person-card__button-edit-person {
   margin-left: 10px;
+}
+
+.person-card__input {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-family: monospace, Arial, Helvetica, sans-serif;
+  outline: 0;
+
+  &:focus {
+    border: 2px solid lightblue;
+  }
+}
+
+.person-card__navigation-buttons {
+  display: flex;
+  margin-top: auto;
+  padding: 20px 10px;
+  justify-content: space-between;
 }

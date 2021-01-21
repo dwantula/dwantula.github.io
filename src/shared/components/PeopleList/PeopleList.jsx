@@ -11,19 +11,21 @@ function PeopleList() {
   const people = useSelector((state) => state.people);
 
   function addNewPerson() {
-    dispatch(addPerson('Witek'));
+    dispatch(addPerson());
   }
 
   return (
     <div className="people-card">
-      {people.map(({ id, name }) => (
-        <PersonCard key={id} name={name} />
-      ))}
       <Button
         onClick={addNewPerson}
         className="people-card__button-add-person"
         text="Add Person"
       />
+      <div className="people-card__people-list">
+        {people.map(({ id, name }) => (
+          <PersonCard key={id} id={id} name={name} />
+        ))}
+      </div>
     </div>
   );
 }
