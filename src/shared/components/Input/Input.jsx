@@ -29,15 +29,9 @@ Input.propTypes = {
   onBlur: PropTypes.func,
   value: PropTypes.string,
   type: PropTypes.string,
-  // inputRef: PropTypes.string,
-  // inputRef: PropTypes.objectOf(
-  //   PropTypes.shape({
-  //     name: PropTypes.string,
-  //   }),
-  // ),
   inputRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+    PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) }),
   ]),
 };
 
