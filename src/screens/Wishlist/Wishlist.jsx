@@ -1,5 +1,5 @@
 import React from 'react';
-import PeopleList from '../shared/components/PeopleList/PeopleList';
+import PeopleList from '../../shared/components/PeopleList/PeopleList';
 import './styles.scss';
 
 function Wishlist() {

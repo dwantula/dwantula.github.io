@@ -19,35 +19,6 @@
   letter-spacing: 2px;
 }
 
-.person-card__gifts {
-  list-style: none;
-  display: block;
-  flex-direction: column;
-  min-height: 300px;
-  min-width: 200px;
-}
-
-.person-card__gift {
-  display: block;
-  border-bottom: 1px solid black;
-  color: gray;
-  justify-content: flex-start;
-  font-size: 1.2rem;
-  height: 70px;
-}
-
-.person-card__gift-name {
-  margin-left: 10px;
-  font-size: 1.4rem;
-}
-
-.person-card__edit-gift {
-  margin-left: 5px;
-}
-
-.person-card__button-delete-gift {
-  float: right;
-}
 
 .person-card_button-add-gitf {
   outline: 0;
@@ -73,10 +44,6 @@
   font-family: monospace, Arial, Helvetica, sans-serif;
 }
 
-.person-card__button-edit-person {
-  margin-left: 10px;
-}
-
 .person-card__input {
   border: none;
   padding: 6px 10px;
@@ -95,4 +62,46 @@
   margin-top: auto;
   padding: 20px 10px;
   justify-content: space-between;
+}
+
+.person-card__gifts-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.person-card__gift {
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+  justify-content: flex-start;
+  border-bottom: 2px solid gray;
+}
+
+.person-card__gift-name {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  font-size: 1.4rem;
+  width: 230px;
+  margin-left: 20px;
+}
+
+.person_card__gitf-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.person-card__gift-button-delete {
+  border: none;
+  font-size: 1.3rem;
+  color: red;
+  outline: 0;
+  cursor: pointer;
+}
+
+.person-card__gift-button-edit {
+  border: none;
+  outline: 0;
+  cursor: pointer;
 }
