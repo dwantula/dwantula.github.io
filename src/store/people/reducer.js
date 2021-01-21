@@ -1,6 +1,6 @@
 import generateId from '../../utils/idGenerator';
 
-import { ADD_PERSON, UPDATE_PERSON_NAME } from './actions';
+import { ADD_PERSON, UPDATE_PERSON_NAME, DELETE_PERSON_CARD } from './actions';
 
 const initialState = [];
 
@@ -11,11 +11,22 @@ function peopleReducer(state = initialState, action) {
       return [...state, newPerson];
     }
     case UPDATE_PERSON_NAME: {
-      const updatePerson = {
+      const updatedPerson = {
         name: action.payload.name,
         id: action.payload.personId,
       };
-      return [...state, updatePerson];
+      const personToUpdateIndex = state.findIndex(
+        (person) => person.id === action.payload.personId,
+      );
+      const newPersons = [...state];
+      newPersons[personToUpdateIndex] = updatedPerson;
+      return newPersons;
+    }
+    case DELETE_PERSON_CARD: {
+      const peopleWithoutDeletePerson = state.filter(
+        (person) => person.id !== action.payload.personId,
+      );
+      return peopleWithoutDeletePerson;
     }
     default:
       return state;

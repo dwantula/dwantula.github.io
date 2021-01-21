@@ -1,15 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { updatePersonName } from '../../../store/people/actions';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import {
+  updatePersonName,
+  deletePersonCard,
+} from '../../../store/people/actions';
 import Input from '../Input/Input';
 import './styles.scss';
 
 import Button from '../Button/Button';
 
-function PersonCard() {
+function PersonCard({ id }) {
   const dispatch = useDispatch();
-  const [namePerson, setNamePerson] = useState('');
+  const [personName, setPersonName] = useState('');
   const textInput = useRef();
 
   useEffect(() => {
@@ -17,11 +20,15 @@ function PersonCard() {
   }, []);
 
   function handlePersonNameChange(event) {
-    setNamePerson(event.target.value);
+    setPersonName(event.target.value);
   }
 
-  function addName() {
-    dispatch(updatePersonName(`${namePerson}`));
+  function editPersonName() {
+    dispatch(updatePersonName(personName, id));
+  }
+
+  function deletePerson() {
+    dispatch(deletePersonCard(id));
   }
 
   return (
@@ -30,37 +37,40 @@ function PersonCard() {
         <Input
           inputRef={textInput}
           onChange={handlePersonNameChange}
-          value={namePerson}
+          onBlur={editPersonName}
+          value={personName}
           placeholder="Write name"
           type="input"
           className="person-card__input"
         />
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          marginTop: 'auto',
+          padding: '20px 10px',
+          justifyContent: 'space-between',
+        }}
+      >
         <Button
-          onClick={addName}
-          className="button person-card__button-delete-person"
+          onClick={deletePerson}
+          className="person-card__button-delete-person"
           type="button"
-          text="X"
+          text="Delete list"
         />
         <Button
           onClick={() => {}}
-          className="button person-card__button-edit-person"
           type="button"
-          text="edit"
+          text="Add gift wish"
+          className="person-card_button-add-gitf"
         />
       </div>
-
-      <Button
-        onClick={() => {}}
-        type="button"
-        text="+"
-        className="person-card_button-add-gitf"
-      />
     </div>
   );
 }
 
-// PersonCard.propTypes = {
-//   namePerson: PropTypes.string.isRequired,
-// };
+PersonCard.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default PersonCard;

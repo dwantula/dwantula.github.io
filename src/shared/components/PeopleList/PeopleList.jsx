@@ -16,14 +16,16 @@ function PeopleList() {
 
   return (
     <div className="people-card">
-      {people.map(({ id, name }) => (
-        <PersonCard key={id} name={name} />
-      ))}
       <Button
         onClick={addNewPerson}
         className="people-card__button-add-person"
         text="Add Person"
       />
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {people.map(({ id, name }) => (
+          <PersonCard key={id} id={id} name={name} />
+        ))}
+      </div>
     </div>
   );
 }
