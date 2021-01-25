@@ -22,8 +22,12 @@ function PeopleList() {
         text="Add Person"
       />
       <div className="people-card__people-list">
-        {people.map(({ id, name }) => (
-          <PersonCard key={id} id={id} name={name} />
+        {people.map(({ personName, personId }) => (
+          <PersonCard
+            key={personId}
+            personId={personId}
+            personName={personName}
+          />
         ))}
       </div>
     </div>

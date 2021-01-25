@@ -1,23 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  updatePersonName,
-  deletePersonCard,
-} from '../../../store/people/actions';
-import { addGift } from '../../../store/gifts/actions';
+import { updatePersonName, deletePersonCard } from 'store/people/actions';
+import { addGift } from 'store/gifts/actions';
+import Gift from 'screens/Gift/Gift';
 import Input from '../Input/Input';
 import './styles.scss';
-
 import Button from '../Button/Button';
-import PersonGift from '../../../screens/Gift/Gift';
 
-function PersonCard({ id }) {
+function PersonCard({ personId }) {
   const dispatch = useDispatch();
   const gifts = useSelector((state) => state.gifts);
 
   const [personName, setPersonName] = useState('');
-  const [giftName, setGiftName] = useState('');
+
   const textInput = useRef();
 
   useEffect(() => {
@@ -29,23 +25,18 @@ function PersonCard({ id }) {
   }
 
   function editPersonName() {
-    dispatch(updatePersonName(personName, id));
+    dispatch(updatePersonName(personName, personId));
   }
 
   function deletePerson() {
-    dispatch(deletePersonCard(id));
+    dispatch(deletePersonCard(personId));
   }
-
   function addPersonGift() {
-    dispatch(addGift());
-  }
-
-  function handleGiftNameChange(event) {
-    setGiftName(event.target.value);
+    dispatch(addGift(personId));
   }
 
   return (
-    <div className="person-card">
+    <main className="person-card">
       <div className="person-card__name">
         <Input
           inputRef={textInput}
@@ -57,17 +48,16 @@ function PersonCard({ id }) {
           className="person-card__input"
         />
       </div>
-      <div className="person-card__gifts-list">
-        <Input
-          value={giftName}
-          type="input"
-          // onBlur={addGiftName}
-          onChange={handleGiftNameChange}
-        />
-        {gifts.map(({ giftName, giftId }) => (
-          <PersonGift key={giftId} giftName={giftName} giftId={giftId} />
+      <span className="person-card__gifts-list">
+        {gifts.map(({ giftId, personId, giftName }) => (
+          <Gift
+            key={giftId}
+            giftName={giftName}
+            giftId={giftId}
+            personId={personId}
+          />
         ))}
-      </div>
+      </span>
       <div className="person-card__navigation-buttons">
         <Button
           onClick={deletePerson}
@@ -82,12 +72,17 @@ function PersonCard({ id }) {
           className="person-card_button-add-gitf"
         />
       </div>
-    </div>
+    </main>
   );
 }
 
 PersonCard.propTypes = {
-  id: PropTypes.string.isRequired,
+  personId: PropTypes.string.isRequired,
+  // giftName: PropTypes.string,
 };
+
+// PersonCard.defaultProps = {
+//   giftName: PropTypes.string,
+// };
 
 export default PersonCard;

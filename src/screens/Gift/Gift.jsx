@@ -1,39 +1,51 @@
-import React from 'react';
-// import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import './styles.scss';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-// import Input from '../../shared/components/Input/Input';
-import Button from '../../shared/components/Button/Button';
-// import { addGift } from '../../store/gifts/actions';
+import Input from 'shared/components/Input/Input';
+import Button from 'shared/components/Button/Button';
+import { deleteGift, editGift } from 'store/gifts/actions';
 
-function PersonGift({ giftName }) {
+function Gift({ giftId }) {
+  const [giftName, setGiftName] = useState('');
+
+  const dispatch = useDispatch();
+
+  function handleGiftNameChange(event) {
+    setGiftName(event.target.value);
+  }
+
+  function updateGift() {
+    dispatch(editGift(giftName, giftId));
+  }
+
+  function removeGift() {
+    dispatch(deleteGift(giftId));
+  }
+
   return (
-    <div className="person-card__gift">
-      <p className="person-card__gift-name">{giftName}</p>
-      <div className="person_card__gitf-buttons">
-        <Button
-          className="person-card__gift-button-delete"
-          onClick={() => {}}
-          type="button"
-          text="X"
-        />
-        <Button
-          className="person-card__gift-button-edit"
-          onClick={() => {}}
-          type="button"
-          text="edit"
-        />
-      </div>
+    <div className="gift">
+      <Input
+        value={giftName}
+        type="input"
+        onBlur={updateGift}
+        onChange={handleGiftNameChange}
+        placeholder="Write gift"
+        className="gift__input-name"
+      />
+      <Button
+        className="gift__button-delete"
+        onClick={removeGift}
+        type="button"
+        text="X"
+      />
     </div>
   );
 }
 
-PersonGift.propTypes = {
-  giftName: PropTypes.string,
+Gift.propTypes = {
+  giftId: PropTypes.string.isRequired,
 };
 
-PersonGift.defaultProps = {
-  giftName: PropTypes.string,
-};
-
-export default PersonGift;
+export default Gift;

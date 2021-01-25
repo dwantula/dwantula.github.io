@@ -69,39 +69,6 @@
   flex-direction: column;
 }
 
-.person-card__gift {
-  display: flex;
-  flex-direction: row;
-  height: 70px;
-  justify-content: flex-start;
-  border-bottom: 2px solid gray;
-}
 
-.person-card__gift-name {
-  display: flex;
-  align-items: center;
-  height: 50px;
-  font-size: 1.4rem;
-  width: 230px;
-  margin-left: 20px;
-}
 
-.person_card__gitf-buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
 
-.person-card__gift-button-delete {
-  border: none;
-  font-size: 1.3rem;
-  color: red;
-  outline: 0;
-  cursor: pointer;
-}
-
-.person-card__gift-button-edit {
-  border: none;
-  outline: 0;
-  cursor: pointer;
-}
