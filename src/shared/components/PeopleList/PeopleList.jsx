@@ -25,7 +25,7 @@ function PeopleList() {
       <div className="people-card__people-list">
         {people.map(({ personName, personId }) => (
           <PersonCard
-            personGifts={gifts[personId]}
+            personGifts={gifts[personId] || []}
             key={personId}
             personId={personId}
             personName={personName}

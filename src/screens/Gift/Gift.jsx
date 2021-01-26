@@ -7,7 +7,7 @@ import Input from 'shared/components/Input/Input';
 import Button from 'shared/components/Button/Button';
 import { deleteGift, editGift } from 'store/gifts/actions';
 
-function Gift({ giftId, personId }) {
+function Gift({ personId, giftId }) {
   const [giftName, setGiftName] = useState('');
 
   const dispatch = useDispatch();
@@ -46,7 +46,11 @@ function Gift({ giftId, personId }) {
 
 Gift.propTypes = {
   giftId: PropTypes.string.isRequired,
-  personId: PropTypes.string.isRequired,
+  personId: PropTypes.string,
+};
+
+Gift.defaultProps = {
+  personId: '',
 };
 
 export default Gift;

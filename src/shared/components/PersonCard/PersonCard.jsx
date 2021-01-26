@@ -49,8 +49,13 @@ function PersonCard({ personGifts, personId }) {
       </div>
       <span className="person-card__gifts-list">
         {personGifts ? (
-          personGifts.map(({ giftId, giftName }) => (
-            <Gift key={giftId} giftName={giftName} giftId={giftId} />
+          personGifts.map(({ giftId, giftName, personId }) => (
+            <Gift
+              key={giftId}
+              giftName={giftName}
+              personId={personId}
+              giftId={giftId}
+            />
           ))
         ) : (
           <p>You dont have any gifts</p>

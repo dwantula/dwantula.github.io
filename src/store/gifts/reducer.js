@@ -18,17 +18,22 @@ function giftsReducer(state = initialState, action) {
       return { ...state, [personId]: newPersonGifts };
     }
     case EDIT_GIFT: {
+      const { personId, giftId, giftName } = action.payload;
       const updatedGift = {
-        giftId: action.payload.giftId,
-        giftName: action.payload.giftName,
-        personId: action.payload.personId,
+        giftId,
+        giftName,
+        personId,
       };
-      const giftToUpdateIndex = state.findIndex(
-        (gift) => gift.giftId === action.payload.giftId,
+      console.log(updatedGift);
+      // const personGifts = state.gifts;
+      // console.log(state[personId]);
+      const giftToUpdateIndex = state[personId].findIndex(
+        (gift) => gift.giftId === giftId,
       );
-      const newGifts = [...state];
-      newGifts[giftToUpdateIndex] = updatedGift;
-      return newGifts;
+      console.log(giftToUpdateIndex);
+      // const newGifts = [...state];
+      // newGifts[giftToUpdateIndex] = updatedGift;
+      return state;
     }
     case DELETE_GIFT: {
       const giftsWithoutDeleteGift = state.filter(
