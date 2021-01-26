@@ -2,29 +2,32 @@ import generateId from '../../utils/idGenerator';
 
 import { DELETE_GIFT, EDIT_GIFT, ADD_GIFT } from './actions';
 
-const initialState = [];
+const initialState = {};
 
 function giftsReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_GIFT: {
+      const { personId } = action.payload;
       const newGift = {
-        giftName: action.payload.giftName,
         giftId: generateId('gift'),
-        personId: action.payload.personId,
       };
-      return [...state, newGift];
+      const newPersonGifts = state[personId]
+        ? [...state[personId], newGift]
+        : [newGift];
+
+      return { ...state, [personId]: newPersonGifts };
     }
     case EDIT_GIFT: {
-      const editGift = {
-        giftName: action.payload.giftName,
+      const updatedGift = {
         giftId: action.payload.giftId,
+        giftName: action.payload.giftName,
         personId: action.payload.personId,
       };
       const giftToUpdateIndex = state.findIndex(
         (gift) => gift.giftId === action.payload.giftId,
       );
       const newGifts = [...state];
-      newGifts[giftToUpdateIndex] = editGift;
+      newGifts[giftToUpdateIndex] = updatedGift;
       return newGifts;
     }
     case DELETE_GIFT: {

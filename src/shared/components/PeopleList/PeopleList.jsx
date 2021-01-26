@@ -9,6 +9,7 @@ import Button from '../Button/Button';
 function PeopleList() {
   const dispatch = useDispatch();
   const people = useSelector((state) => state.people);
+  const gifts = useSelector((state) => state.gifts);
 
   function addNewPerson() {
     dispatch(addPerson());
@@ -24,6 +25,7 @@ function PeopleList() {
       <div className="people-card__people-list">
         {people.map(({ personName, personId }) => (
           <PersonCard
+            personGifts={gifts[personId]}
             key={personId}
             personId={personId}
             personName={personName}

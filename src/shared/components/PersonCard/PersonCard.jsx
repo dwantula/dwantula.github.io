@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updatePersonName, deletePersonCard } from 'store/people/actions';
 import { addGift } from 'store/gifts/actions';
@@ -8,9 +8,8 @@ import Input from '../Input/Input';
 import './styles.scss';
 import Button from '../Button/Button';
 
-function PersonCard({ personId }) {
+function PersonCard({ personGifts, personId }) {
   const dispatch = useDispatch();
-  const gifts = useSelector((state) => state.gifts);
 
   const [personName, setPersonName] = useState('');
 
@@ -49,14 +48,13 @@ function PersonCard({ personId }) {
         />
       </div>
       <span className="person-card__gifts-list">
-        {gifts.map(({ giftId, personId, giftName }) => (
-          <Gift
-            key={giftId}
-            giftName={giftName}
-            giftId={giftId}
-            personId={personId}
-          />
-        ))}
+        {personGifts ? (
+          personGifts.map(({ giftId, giftName }) => (
+            <Gift key={giftId} giftName={giftName} giftId={giftId} />
+          ))
+        ) : (
+          <p>You dont have any gifts</p>
+        )}
       </span>
       <div className="person-card__navigation-buttons">
         <Button
@@ -78,11 +76,21 @@ function PersonCard({ personId }) {
 
 PersonCard.propTypes = {
   personId: PropTypes.string.isRequired,
-  // giftName: PropTypes.string,
+  personGifts: PropTypes.arrayOf(
+    PropTypes.shape({
+      giftId: PropTypes.string,
+      giftName: PropTypes.string,
+    }),
+  ),
 };
 
-// PersonCard.defaultProps = {
-//   giftName: PropTypes.string,
-// };
+PersonCard.defaultProps = {
+  personGifts: PropTypes.arrayOf(
+    PropTypes.shape({
+      giftId: '',
+      giftName: '',
+    }),
+  ),
+};
 
 export default PersonCard;

@@ -7,9 +7,9 @@ export const addGift = (personId) => ({
   payload: { personId },
 });
 
-export const editGift = (giftId, giftName) => ({
+export const editGift = (giftId, giftName, personId) => ({
   type: EDIT_GIFT,
-  payload: { giftId, giftName },
+  payload: { giftId, giftName, personId },
 });
 
 export const deleteGift = (giftId) => ({
