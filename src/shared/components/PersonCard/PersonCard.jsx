@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updatePersonName, deletePersonCard } from 'store/people/actions';
-import { addGift } from 'store/gifts/actions';
+import { addGift, deletePersonGifts } from 'store/gifts/actions';
 import Gift from 'screens/Gift/Gift';
 import Input from '../Input/Input';
 import './styles.scss';
@@ -29,7 +29,9 @@ function PersonCard({ personGifts, personId }) {
 
   function deletePerson() {
     dispatch(deletePersonCard(personId));
+    dispatch(deletePersonGifts(personId));
   }
+
   function addPersonGift() {
     dispatch(addGift(personId));
   }
@@ -49,7 +51,7 @@ function PersonCard({ personGifts, personId }) {
       </div>
       <span className="person-card__gifts-list">
         {personGifts ? (
-          personGifts.map(({ giftId, giftName, personId }) => (
+          personGifts.map(({ giftId, giftName }) => (
             <Gift
               key={giftId}
               giftName={giftName}

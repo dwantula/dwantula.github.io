@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './styles.scss';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,6 +12,12 @@ function Gift({ personId, giftId }) {
 
   const dispatch = useDispatch();
 
+  const textInput = useRef();
+
+  useEffect(() => {
+    textInput.current.focus();
+  }, []);
+
   function handleGiftNameChange(event) {
     setGiftName(event.target.value);
   }
@@ -21,12 +27,13 @@ function Gift({ personId, giftId }) {
   }
 
   function removeGift() {
-    dispatch(deleteGift(giftId));
+    dispatch(deleteGift(giftId, personId));
   }
 
   return (
     <div className="gift">
       <Input
+        inputRef={textInput}
         value={giftName}
         type="input"
         onBlur={updateGift}
