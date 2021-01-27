@@ -1,4 +1,4 @@
-import generateId from '../../utils/idGenerator';
+import generateId from 'utils/idGenerator';
 
 import {
   DELETE_GIFT,
@@ -39,7 +39,7 @@ function giftsReducer(state = initialState, action) {
       const newPersonGifts = state[personId].filter(
         (gift) => gift.giftId !== giftId,
       );
-      return { [personId]: newPersonGifts };
+      return { ...state, [personId]: newPersonGifts };
     }
     case DELETE_PERSON_GIFTS: {
       const { personId } = action.payload;

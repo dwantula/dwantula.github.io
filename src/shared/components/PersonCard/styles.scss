@@ -1,3 +1,6 @@
+@import 'shared/styles/colors.scss';
+@import 'shared/styles/font.scss';
+
 .person-card {
   margin-top: 40px;
   display: flex;
@@ -14,7 +17,7 @@
   display: flex;
   height: 60px;
   padding: 10px;
-  border-bottom: 2px solid lightblue;
+  border-bottom: 2px solid $lightBlue;
   text-align: start;
   letter-spacing: 2px;
 }
@@ -25,21 +28,21 @@
   font-size: 1rem;
   border-radius: 50px;
   font-family: monospace, Arial, Helvetica, sans-serif;
-  background-color: lightblue;
+  background-color: $lightBlue;
   cursor: pointer;
-  border: 1px solid lightblue;
-  color: #eeeeee;
+  border: 1px solid $lightBlue;
+  color: $white;
   cursor: pointer;
 }
 
 .person-card__button-delete-person {
-  background: #e66465;
-  color: #ffffff;
+  background: $lightRed;
+  color: $white;
   padding: 8px 12px;
   font-size: 1rem;
   border-radius: 50px;
   border: none;
-  font-family: monospace, Arial, Helvetica, sans-serif;
+  font-family: $font-text;
 }
 
 .person-card__input {
@@ -47,10 +50,10 @@
   padding: 6px 10px;
   border-radius: 5px;
   font-size: 1.2rem;
-  font-family: monospace, Arial, Helvetica, sans-serif;
+  font-family: $font-text;
   outline: 0;
   &:focus {
-    border: 2px solid lightblue;
+    border: 2px solid $lightBlue;
   }
 }
 
@@ -65,7 +68,3 @@
   display: flex;
   flex-direction: column;
 }
-
-
-
-

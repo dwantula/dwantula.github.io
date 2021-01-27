@@ -1,9 +1,12 @@
+@import 'shared/styles/colors.scss';
+@import 'shared/styles/font.scss';
+
 .gift {
   display: flex;
   flex-direction: row;
   height: 50px;
   padding: 6px 10px;
-  background-color: red;
+  background-color: $red;
   margin-bottom: 5px;
   margin-top: 5px;
 }
@@ -14,15 +17,15 @@
   border-radius: 5px;
   font-size: 1.2rem;
   width: 90%;
-  font-family: monospace, Arial, Helvetica, sans-serif;
+  font-family: $font-text;
   outline: 0;
 }
 
 .gift__button-delete {
-  background-color: red;
+  background-color: $red;
   border: none;
   font-size: 1.3rem;
-  color: white;
+  color: $white;
   outline: 0;
   cursor: pointer;
   margin-left: 20px;
