@@ -1,12 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import { updatePersonName, deletePersonCard } from 'store/people/actions';
 import { addGift, deletePersonGifts } from 'store/gifts/actions';
+import PropTypes from 'prop-types';
+
 import Gift from 'screens/Gift/Gift';
 import Input from '../Input/Input';
-import './styles.scss';
 import Button from '../Button/Button';
+
+import './styles.scss';
 
 function PersonCard({ personGifts, personId, personName }) {
   const dispatch = useDispatch();

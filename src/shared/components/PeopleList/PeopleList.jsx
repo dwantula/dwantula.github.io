@@ -1,10 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPerson } from '../../../store/people/actions';
-import './styles.scss';
 
 import PersonCard from '../PersonCard/PersonCard';
 import Button from '../Button/Button';
+
+import './styles.scss';
 
 function PeopleList() {
   const dispatch = useDispatch();

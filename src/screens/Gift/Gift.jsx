@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './styles.scss';
+import { deleteGift, editGift } from 'store/gifts/actions';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Input from 'shared/components/Input/Input';
 import Button from 'shared/components/Button/Button';
-import { deleteGift, editGift } from 'store/gifts/actions';
+
+import './styles.scss';
 
 function Gift({ personId, giftId, giftName }) {
   const [name, setGiftName] = useState(giftName);
