@@ -27,8 +27,8 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
-  value: PropTypes.string,
-  type: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   inputRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) }),
@@ -39,10 +39,8 @@ Input.defaultProps = {
   className: '',
   placeholder: '',
   onChange: '',
-  onBlur: '',
-  value: '',
-  type: '',
-  inputRef: '',
+  onBlur: () => {},
+  inputRef: () => {},
 };
 
 export default Input;

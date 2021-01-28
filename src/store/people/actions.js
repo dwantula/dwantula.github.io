@@ -7,9 +7,9 @@ export const addPerson = () => ({
   type: ADD_PERSON,
 });
 
-export const updatePersonName = (name, personId) => ({
+export const updatePersonName = (personName, personId) => ({
   type: UPDATE_PERSON_NAME,
-  payload: { name, personId },
+  payload: { personName, personId },
 });
 
 export const deletePersonCard = (personId) => ({

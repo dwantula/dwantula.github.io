@@ -1,5 +1,7 @@
+@import 'shared/styles/colors.scss';
+
 body {
-  background-color: whitesmoke;
+  background-color: $whiteSmoke;
   box-sizing: border-box;
   margin: 100px auto;
   font-size: 20px;

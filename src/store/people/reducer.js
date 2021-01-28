@@ -7,16 +7,19 @@ const initialState = [];
 function peopleReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_PERSON: {
-      const newPerson = { name: action.payload, id: generateId('person') };
+      const newPerson = {
+        name: action.payload,
+        personId: generateId('person'),
+      };
       return [...state, newPerson];
     }
     case UPDATE_PERSON_NAME: {
       const updatedPerson = {
-        name: action.payload.name,
-        id: action.payload.personId,
+        personName: action.payload.personName,
+        personId: action.payload.personId,
       };
       const personToUpdateIndex = state.findIndex(
-        (person) => person.id === action.payload.personId,
+        (person) => person.personId === action.payload.personId,
       );
       const newPersons = [...state];
       newPersons[personToUpdateIndex] = updatedPerson;
@@ -24,7 +27,7 @@ function peopleReducer(state = initialState, action) {
     }
     case DELETE_PERSON_CARD: {
       const peopleWithoutDeletePerson = state.filter(
-        (person) => person.id !== action.payload.personId,
+        (person) => person.personId !== action.payload.personId,
       );
       return peopleWithoutDeletePerson;
     }

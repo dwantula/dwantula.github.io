@@ -1,18 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  updatePersonName,
-  deletePersonCard,
-} from '../../../store/people/actions';
+import { updatePersonName, deletePersonCard } from 'store/people/actions';
+import { addGift, deletePersonGifts } from 'store/gifts/actions';
+import Gift from 'screens/Gift/Gift';
 import Input from '../Input/Input';
 import './styles.scss';
-
 import Button from '../Button/Button';
 
-function PersonCard({ id }) {
+function PersonCard({ personGifts, personId }) {
   const dispatch = useDispatch();
+
   const [personName, setPersonName] = useState('');
+
   const textInput = useRef();
 
   useEffect(() => {
@@ -24,15 +24,20 @@ function PersonCard({ id }) {
   }
 
   function editPersonName() {
-    dispatch(updatePersonName(personName, id));
+    dispatch(updatePersonName(personName, personId));
   }
 
   function deletePerson() {
-    dispatch(deletePersonCard(id));
+    dispatch(deletePersonCard(personId));
+    dispatch(deletePersonGifts(personId));
+  }
+
+  function addPersonGift() {
+    dispatch(addGift(personId));
   }
 
   return (
-    <div className="person-card">
+    <main className="person-card">
       <div className="person-card__name">
         <Input
           inputRef={textInput}
@@ -44,6 +49,20 @@ function PersonCard({ id }) {
           className="person-card__input"
         />
       </div>
+      <span className="person-card__gifts-list">
+        {personGifts ? (
+          personGifts.map(({ giftId, giftName }) => (
+            <Gift
+              key={giftId}
+              giftName={giftName}
+              personId={personId}
+              giftId={giftId}
+            />
+          ))
+        ) : (
+          <p>You dont have any gifts</p>
+        )}
+      </span>
       <div className="person-card__navigation-buttons">
         <Button
           onClick={deletePerson}
@@ -52,18 +71,33 @@ function PersonCard({ id }) {
           text="Delete list"
         />
         <Button
-          onClick={() => {}}
+          onClick={addPersonGift}
           type="button"
           text="Add gift wish"
           className="person-card_button-add-gitf"
         />
       </div>
-    </div>
+    </main>
   );
 }
 
 PersonCard.propTypes = {
-  id: PropTypes.string.isRequired,
+  personId: PropTypes.string.isRequired,
+  personGifts: PropTypes.arrayOf(
+    PropTypes.shape({
+      giftId: PropTypes.string,
+      giftName: PropTypes.string,
+    }),
+  ),
+};
+
+PersonCard.defaultProps = {
+  personGifts: PropTypes.arrayOf(
+    PropTypes.shape({
+      giftId: '',
+      giftName: '',
+    }),
+  ),
 };
 
 export default PersonCard;
