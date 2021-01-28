@@ -1,8 +1,12 @@
+import {
+  getPeopleFromLocalStorage,
+  setPeopleInLocalStorage,
+} from 'shared/services/people';
 import generateId from '../../utils/idGenerator';
 
 import { ADD_PERSON, UPDATE_PERSON_NAME, DELETE_PERSON_CARD } from './actions';
 
-const initialState = [];
+const initialState = getPeopleFromLocalStorage();
 
 function peopleReducer(state = initialState, action) {
   switch (action.type) {
@@ -11,7 +15,9 @@ function peopleReducer(state = initialState, action) {
         name: action.payload,
         personId: generateId('person'),
       };
-      return [...state, newPerson];
+      const newPersons = [...state, newPerson];
+      setPeopleInLocalStorage(newPersons);
+      return newPersons;
     }
     case UPDATE_PERSON_NAME: {
       const updatedPerson = {
@@ -23,12 +29,14 @@ function peopleReducer(state = initialState, action) {
       );
       const newPersons = [...state];
       newPersons[personToUpdateIndex] = updatedPerson;
+      setPeopleInLocalStorage(newPersons);
       return newPersons;
     }
     case DELETE_PERSON_CARD: {
       const peopleWithoutDeletePerson = state.filter(
         (person) => person.personId !== action.payload.personId,
       );
+      setPeopleInLocalStorage(peopleWithoutDeletePerson);
       return peopleWithoutDeletePerson;
     }
     default:
