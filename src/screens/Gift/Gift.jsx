@@ -1,14 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './styles.scss';
+import { deleteGift, editGift } from 'store/gifts/actions';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Input from 'shared/components/Input/Input';
 import Button from 'shared/components/Button/Button';
-import { deleteGift, editGift } from 'store/gifts/actions';
 
-function Gift({ personId, giftId }) {
-  const [giftName, setGiftName] = useState('');
+import './styles.scss';
+
+function Gift({ personId, giftId, giftName }) {
+  const [name, setGiftName] = useState(giftName);
 
   const dispatch = useDispatch();
 
@@ -23,7 +24,7 @@ function Gift({ personId, giftId }) {
   }
 
   function updateGift() {
-    dispatch(editGift(giftId, giftName, personId));
+    dispatch(editGift(giftId, name, personId));
   }
 
   function removeGift() {
@@ -34,7 +35,7 @@ function Gift({ personId, giftId }) {
     <div className="gift">
       <Input
         inputRef={textInput}
-        value={giftName}
+        value={name}
         type="input"
         onBlur={updateGift}
         onChange={handleGiftNameChange}
@@ -54,10 +55,12 @@ function Gift({ personId, giftId }) {
 Gift.propTypes = {
   giftId: PropTypes.string.isRequired,
   personId: PropTypes.string,
+  giftName: PropTypes.string,
 };
 
 Gift.defaultProps = {
   personId: '',
+  giftName: '',
 };
 
 export default Gift;

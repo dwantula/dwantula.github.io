@@ -1,17 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import { updatePersonName, deletePersonCard } from 'store/people/actions';
 import { addGift, deletePersonGifts } from 'store/gifts/actions';
+import PropTypes from 'prop-types';
+
 import Gift from 'screens/Gift/Gift';
 import Input from '../Input/Input';
-import './styles.scss';
 import Button from '../Button/Button';
 
-function PersonCard({ personGifts, personId }) {
+import './styles.scss';
+
+function PersonCard({ personGifts, personId, personName }) {
   const dispatch = useDispatch();
 
-  const [personName, setPersonName] = useState('');
+  const [name, setPersonName] = useState(personName);
 
   const textInput = useRef();
 
@@ -24,7 +26,7 @@ function PersonCard({ personGifts, personId }) {
   }
 
   function editPersonName() {
-    dispatch(updatePersonName(personName, personId));
+    dispatch(updatePersonName(name, personId));
   }
 
   function deletePerson() {
@@ -43,7 +45,7 @@ function PersonCard({ personGifts, personId }) {
           inputRef={textInput}
           onChange={handlePersonNameChange}
           onBlur={editPersonName}
-          value={personName}
+          value={name}
           placeholder="Write name"
           type="input"
           className="person-card__input"
@@ -83,6 +85,7 @@ function PersonCard({ personGifts, personId }) {
 
 PersonCard.propTypes = {
   personId: PropTypes.string.isRequired,
+  personName: PropTypes.string,
   personGifts: PropTypes.arrayOf(
     PropTypes.shape({
       giftId: PropTypes.string,
@@ -92,12 +95,8 @@ PersonCard.propTypes = {
 };
 
 PersonCard.defaultProps = {
-  personGifts: PropTypes.arrayOf(
-    PropTypes.shape({
-      giftId: '',
-      giftName: '',
-    }),
-  ),
+  personName: '',
+  personGifts: [],
 };
 
 export default PersonCard;
