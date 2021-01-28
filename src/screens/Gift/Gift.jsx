@@ -2,9 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { deleteGift, editGift } from 'store/gifts/actions';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import Input from 'shared/components/Input/Input';
-import Button from 'shared/components/Button/Button';
+// import Button from 'shared/components/Button/Button';
 
 import './styles.scss';
 
@@ -42,12 +44,9 @@ function Gift({ personId, giftId, giftName }) {
         placeholder="Write gift"
         className="gift__input-name"
       />
-      <Button
-        className="gift__button-delete"
-        onClick={removeGift}
-        type="button"
-        text="X"
-      />
+      <div className="gift__icon">
+        <FontAwesomeIcon icon={faTrash} onClick={removeGift} />
+      </div>
     </div>
   );
 }

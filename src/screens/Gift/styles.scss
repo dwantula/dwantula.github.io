@@ -6,9 +6,12 @@
   flex-direction: row;
   height: 50px;
   padding: 6px 10px;
-  background-color: $red;
+  background-color: $lightGray;
   margin-bottom: 5px;
   margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 8px;
 }
 
 .gift__input-name {
@@ -20,19 +23,21 @@
   font-family: $font-text;
   outline: 0;
   &:focus {
-    border: 3px solid $lightBlue;
+    border: 2px solid $gray;
   }
 }
 
-.gift__button-delete {
-  background-color: $red;
+.gift__icon {
+  background-color: $lightGray;
   border: none;
   font-size: 1.3rem;
-  color: $white;
+  color: $red;
   outline: 0;
+  opacity: 0.5;
   cursor: pointer;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
   &:hover {
-    color: $black;
+    opacity: 1;
   }
 }
