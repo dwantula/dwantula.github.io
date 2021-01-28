@@ -6,11 +6,11 @@ import {
 const PEOPLE_KEY = 'people';
 
 export const getPeopleFromLocalStorage = () => {
-  const getPeople = getItemFromLocalStorage(PEOPLE_KEY) || [];
-  return getPeople;
+  const people = getItemFromLocalStorage(PEOPLE_KEY) || [];
+  return people;
 };
 
 export const setPeopleInLocalStorage = (newPeople) => {
-  const savePeople = saveItemInLocalStorage(PEOPLE_KEY, newPeople);
-  return savePeople;
+  const people = saveItemInLocalStorage(PEOPLE_KEY, newPeople);
+  return people;
 };

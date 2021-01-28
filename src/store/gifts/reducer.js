@@ -1,3 +1,8 @@
+import {
+  getGiftsFromLocalStorage,
+  setGiftsInLocalStorage,
+} from 'shared/services/gifts';
+
 import generateId from 'utils/idGenerator';
 
 import {
@@ -7,7 +12,7 @@ import {
   DELETE_PERSON_GIFTS,
 } from './actions';
 
-const initialState = {};
+const initialState = getGiftsFromLocalStorage();
 
 function giftsReducer(state = initialState, action) {
   switch (action.type) {
@@ -19,7 +24,9 @@ function giftsReducer(state = initialState, action) {
       const newPersonGifts = state[personId]
         ? [...state[personId], newGift]
         : [newGift];
-      return { ...state, [personId]: newPersonGifts };
+      const gifts = { ...state, [personId]: newPersonGifts };
+      setGiftsInLocalStorage(gifts);
+      return gifts;
     }
     case EDIT_GIFT: {
       const { personId, giftId, giftName } = action.payload;
@@ -32,6 +39,7 @@ function giftsReducer(state = initialState, action) {
       );
       const newGifts = state[personId];
       newGifts[giftToUpdateIndex] = updatedGift;
+      setGiftsInLocalStorage(state);
       return state;
     }
     case DELETE_GIFT: {
@@ -39,11 +47,14 @@ function giftsReducer(state = initialState, action) {
       const newPersonGifts = state[personId].filter(
         (gift) => gift.giftId !== giftId,
       );
-      return { ...state, [personId]: newPersonGifts };
+      const newGifts = { ...state, [personId]: newPersonGifts };
+      setGiftsInLocalStorage(newGifts);
+      return newGifts;
     }
     case DELETE_PERSON_GIFTS: {
       const { personId } = action.payload;
       const { [personId]: _, ...newState } = state;
+      setGiftsInLocalStorage(newState);
       return newState;
     }
     default:

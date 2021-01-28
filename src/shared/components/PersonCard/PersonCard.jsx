@@ -8,10 +8,10 @@ import Input from '../Input/Input';
 import './styles.scss';
 import Button from '../Button/Button';
 
-function PersonCard({ personGifts, personId }) {
+function PersonCard({ personGifts, personId, personName }) {
   const dispatch = useDispatch();
 
-  const [personName, setPersonName] = useState('');
+  const [name, setPersonName] = useState(personName);
 
   const textInput = useRef();
 
@@ -24,7 +24,7 @@ function PersonCard({ personGifts, personId }) {
   }
 
   function editPersonName() {
-    dispatch(updatePersonName(personName, personId));
+    dispatch(updatePersonName(name, personId));
   }
 
   function deletePerson() {
@@ -43,7 +43,7 @@ function PersonCard({ personGifts, personId }) {
           inputRef={textInput}
           onChange={handlePersonNameChange}
           onBlur={editPersonName}
-          value={personName}
+          value={name}
           placeholder="Write name"
           type="input"
           className="person-card__input"
@@ -83,6 +83,7 @@ function PersonCard({ personGifts, personId }) {
 
 PersonCard.propTypes = {
   personId: PropTypes.string.isRequired,
+  personName: PropTypes.string,
   personGifts: PropTypes.arrayOf(
     PropTypes.shape({
       giftId: PropTypes.string,
@@ -92,12 +93,8 @@ PersonCard.propTypes = {
 };
 
 PersonCard.defaultProps = {
-  personGifts: PropTypes.arrayOf(
-    PropTypes.shape({
-      giftId: '',
-      giftName: '',
-    }),
-  ),
+  personName: '',
+  personGifts: [],
 };
 
 export default PersonCard;

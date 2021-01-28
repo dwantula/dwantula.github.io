@@ -19,6 +19,9 @@
   width: 90%;
   font-family: $font-text;
   outline: 0;
+  &:focus {
+    border: 3px solid $lightBlue;
+  }
 }
 
 .gift__button-delete {
@@ -29,4 +32,7 @@
   outline: 0;
   cursor: pointer;
   margin-left: 20px;
+  &:hover {
+    color: black;
+  }
 }

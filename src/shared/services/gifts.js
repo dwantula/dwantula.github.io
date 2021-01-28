@@ -6,11 +6,11 @@ import {
 const GIFTS_KEY = 'gifts';
 
 export const getGiftsFromLocalStorage = () => {
-  const getGifts = getItemFromLocalStorage(GIFTS_KEY) || {};
-  return getGifts;
+  const gifts = getItemFromLocalStorage(GIFTS_KEY) || {};
+  return gifts;
 };
 
 export const setGiftsInLocalStorage = (newGifts) => {
-  const saveGifts = saveItemInLocalStorage(GIFTS_KEY, newGifts);
-  return saveGifts;
+  const gifts = saveItemInLocalStorage(GIFTS_KEY, newGifts);
+  return gifts;
 };
